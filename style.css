@@ -5,7 +5,7 @@
 }
 
 .fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover {
-    color: #008000;
+    color: red;
 }
 
 .fab {
@@ -14,6 +14,6 @@
 
 /* footer styling */
 #footer {
-    background-color: white;
+    background-color: green;
     text-align: center;
 }
