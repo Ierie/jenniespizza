@@ -1,3 +1,9 @@
+.navbar i {
+    background-color: green;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
 /* social media icons styling */
 .social-icons {
     font-size: 36px;
