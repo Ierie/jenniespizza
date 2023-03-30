@@ -1,0 +1,19 @@
+/* social media icons styling */
+.social-icons {
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover {
+    color: #008000;
+}
+
+.fab {
+    color: #000000;
+}
+
+/* footer styling */
+#footer {
+    background-color: white;
+    text-align: center;
+}
