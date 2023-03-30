@@ -1,0 +1,18 @@
+
+
+
+/* PIZZA MAIN MENU CSS*/
+.pizzacategories {
+    height: 60vh;
+    width: 35%;
+}
+
+.pizzamenu{
+    background-color: antiquewhite;
+    height: 60vh;
+    width: 100%;
+}
+
+.categorybutton {
+    font-size: 0.8rem;
+}
