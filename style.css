@@ -1,3 +1,32 @@
+/*herobanner*/
+.herosectionbanner {
+  height: 400px;
+  width: 100%;
+}
+
+.herosectionbanner img {
+  height: 400px;
+  width: 100%;
+  object-fit: fill;
+}
+
+.herosectionbanner h1 {
+  font-size: 4em;
+  position: absolute;
+  color: white;
+  background-color: green;
+  border-radius: 10%;
+  text-align: center;
+  padding: 10px;
+}
+
+/*footerbanner*/
+.footerbanner {
+  background-color: gray;
+  height: 300px;
+  width: 100%;
+}
+
 /* Icon 1 */
 
 .animated-icon1, .animated-icon2, .animated-icon3 {
