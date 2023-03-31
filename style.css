@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*herobanner*/
 .herosectionbanner {
   height: 400px;
@@ -27,6 +28,38 @@
   width: 100%;
 }
 
+=======
+/* Mobile View 375px */
+
+/* PIZZA MAIN MENU CSS*/
+
+
+.pizzacategories {
+    height: 60vh;
+}
+
+.pizzamenu{
+    width: 100%;
+}
+
+.categorybutton {
+    font-size: 0.8rem;
+}
+
+.menuheading{
+    font-family: Verdana;
+}
+
+.legends{
+    max-width: 80%;
+}
+
+.legenditems{
+    font-size: x-small;
+}
+
+
+>>>>>>> 850d485e0017eada6117c76414c07ec199e66332
 /* Icon 1 */
 
 .animated-icon1, .animated-icon2, .animated-icon3 {
