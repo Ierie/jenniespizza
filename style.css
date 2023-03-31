@@ -1,3 +1,49 @@
+.header{
+  position: fixed;
+  top:0; left:0; right:0;
+  background-color: green;
+  box-shadow: var(--box-shadow);
+  z-index: 1000;
+}
+
+.header .flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header .flex .logo{
+  font-size: 2.5rem;
+  color:var(--black);
+}
+
+.header .flex .navbar a{
+  margin:0 1rem;
+  font-size: 2.2rem;
+  color:var(--black);
+}
+
+.header .flex .navbar a:hover{
+  text-decoration: underline;
+  color:var(--red);
+}
+
+.header .flex .icons div{
+  font-size: 2rem;
+  color:var(--light-color);
+  cursor: pointer;
+  margin-left: 1.7rem;
+}
+
+.header .flex .icons div:hover{
+  color:var(--red);
+}
+
+.header .flex .icons div span{
+  font-size: 2rem;
+}
+
 /* Mobile View 375px */
 
 /* PIZZA MAIN MENU CSS*/
@@ -202,6 +248,9 @@
 .social-icons {
     font-size: 36px;
     cursor: pointer;
+    padding-top: 20px;
+    margin-top: 20px;
+   
 }
 
 .fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover {
@@ -209,11 +258,20 @@
 }
 
 .fab {
-    color: #000000;
+    color: white;
 }
 
 /* footer styling */
 #footer {
     background-color: green;
-    text-align: center;
+    text-align: right;
+   
+
+    
+}
+
+.credit {
+  text-align: center;
+  font-size: 1rem;
+  color: white;
 }
