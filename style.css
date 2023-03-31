@@ -202,6 +202,9 @@
 .social-icons {
     font-size: 36px;
     cursor: pointer;
+    padding-top: 20px;
+    margin-top: 20px;
+   
 }
 
 .fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover {
@@ -216,6 +219,9 @@
 #footer {
     background-color: green;
     text-align: right;
+   
+
+    
 }
 
 .credit {
