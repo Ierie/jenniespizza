@@ -179,11 +179,11 @@
 }
 
 .fab {
-    color: #000000;
+    color: white;
 }
 
 /* footer styling */
 #footer {
     background-color: green;
-    text-align: center;
+    text-align: right;
 }
