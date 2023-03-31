@@ -1,47 +1,59 @@
-.header{
+.header {
   position: fixed;
-  top:0; left:0; right:0;
-  background-color: green;
-  box-shadow: var(--box-shadow);
-  z-index: 1000;
+  background-color: #00b530;
+  height: 60px;
+  width: 100%;
 }
 
-.header .flex{
+.header .navigation {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header .navigation .logo {
+  width: 13%;
+  height: 90%;
+}
+
+.header .navigation .nav-links {
+  height: 90%;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header .navigation .nav-links a {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.2em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
 }
 
-.header .flex .logo{
-  font-size: 2.5rem;
-  color:var(--black);
+.header .navigation .nav-links a:hover {
+  color: blue;
 }
 
-.header .flex .navbar a{
-  margin:0 1rem;
-  font-size: 2.2rem;
-  color:var(--black);
+.header .navigation .nav-icons {
+  height: 90%;
+  gap: 15px;
+  display: flex;
+  align-items: center;
 }
 
-.header .flex .navbar a:hover{
-  text-decoration: underline;
-  color:var(--red);
+.header .navigation .nav-icons a {
+  text-decoration: none;
+  color: white;
 }
 
-.header .flex .icons div{
-  font-size: 2rem;
-  color:var(--light-color);
-  cursor: pointer;
-  margin-left: 1.7rem;
-}
-
-.header .flex .icons div:hover{
-  color:var(--red);
-}
-
-.header .flex .icons div span{
-  font-size: 2rem;
+.header .navigation .nav-icons a:hover {
+  color: blue;
 }
 
 /* Mobile View 375px */
