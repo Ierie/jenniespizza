@@ -1,16 +1,30 @@
+/* Mobile View 375px */
+
 /* PIZZA MAIN MENU CSS*/
+
+
 .pizzacategories {
     height: 60vh;
 }
 
 .pizzamenu{
-    background-color: antiquewhite;
-    height: 60vh;
     width: 100%;
 }
 
 .categorybutton {
     font-size: 0.8rem;
+}
+
+.menuheading{
+    font-family: Verdana;
+}
+
+.legends{
+    max-width: 80%;
+}
+
+.legenditems{
+    font-size: x-small;
 }
 
 /* Icon 1 */
