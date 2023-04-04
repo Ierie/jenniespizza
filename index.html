@@ -23,10 +23,10 @@
 
         <section class="navigation">
 
-            <img src="./images/Jennie'sPizzaLogo.png" class="logo" href="">
+            <img src="./images/Jennie'sPizzaLogo.png" class="logo" href="#home" onclick="navigate('home')">
             
             <div class="nav-links">
-                <a href="#">Login</a>
+                <a href="#login" onclick="navigate('login')">Login</a>
                 <a href="#">About Us</a>
                 <a href="#">Menu</a>
             </div>
@@ -43,7 +43,8 @@
   
 
     <main>
-
+    
+    <div id="home" class="page">
         <section class="herosectionbanner">
           <img src="./images/project-banner.png" width="100%">
         </section>
@@ -212,7 +213,9 @@
             </section>
         </section>
         <section class="footerbanner"></section>
+    </div>
 
+    <div id="login" class="page hidden">
             <section id="login-form" class="login">
 
                 <h1>Login to Jennie's Pizza</h1>
@@ -273,6 +276,7 @@
 
                 </form>
             </section>
+    </div>
 
     </main>
 
