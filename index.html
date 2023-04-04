@@ -212,6 +212,67 @@
         </section>
         <section class="footerbanner"></section>
 
+            <section id="login-form" class="login">
+
+                <h1>Login to Jennie's Pizza</h1>
+                <p>New Users? <span id="show-register">Create an Account</span> &nbsp; <span id="loading-register" class="spinner-border text-primary d-none" role="status"></span></p>
+
+                <form action="#">
+
+                        <!-- Email Field -->
+                        <label for="login-email">Email Address</label>
+                        <input type="text" class="form-control is-invalid" id="login-email" required>
+                        <span id="login-email-error" class="text-danger d-none"></span>
+
+                        <!-- Password Filed -->
+                        <label for="login-password">Password</label>
+                        <input type="password" class="form-control is-invalid" id="login-password" required>
+                        <span id="login-password-error" class="text-danger d-none"></span>
+                        
+                        <button type="submit" onclick="validateLoginForm()">Login</button>
+                
+                    </form>
+                
+            </section>
+
+            <section id="register-form" class="register">
+                    
+                <h1>Register to Jennie's Pizza</h1>
+                <p>Already have an account? <span id="show-login">Login</span> &nbsp; <span id="loading-login" class="spinner-border text-primary d-none" role="status"></span></p>
+
+                <form action="#">
+
+                    <!-- First Name Field -->
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control is-invalid" id="first-name" required>
+                    <span id="first-name-error" class="text-danger d-none"></span>
+
+                    <!-- Last Name Field -->
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control is-invalid" id="last-name" required>
+                    <span id="last-name-error" class="text-danger d-none"></span>
+
+                    <!-- Email Field -->
+                    <label for="register-email">Email Address</label>
+                    <input type="email" class="form-control is-invalid" id="register-email" required>
+                    <span id="register-email-error" class="text-danger d-none"></span>
+
+                    <!-- Password Field -->
+                    <label for="register-password">Password</label>
+                    <input type="password" class="form-control is-invalid" id="register-password" required>
+                    <span id="register-password-error" class="text-danger d-none"></span>
+
+                    <!-- Confirm Password Field -->
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" class="form-control is-invalid" id="confirm-password" required>
+                    <span id="confirm-password-error" class="text-danger d-none"></span>        
+                    
+                    
+                    <button type="submit" onclick="validateRegisterForm()">Register</button>
+
+                </form>
+            </section>
+
     </main>
 
 
