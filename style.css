@@ -35,7 +35,7 @@
 }
 
 .header .navigation .nav-links a:hover {
-  color: blue;
+  color: red;
 }
 
 .header .navigation .nav-icons {
@@ -51,7 +51,7 @@
 }
 
 .header .navigation .nav-icons a:hover {
-  color: blue;
+  color: red;
 }
 
 /* Mobile View 375px */
