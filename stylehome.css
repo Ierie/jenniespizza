@@ -1,0 +1,51 @@
+/* MOBILE VIEW SCREEN: 340px */
+
+*{
+    font-family: Verdana;
+}
+
+.header{
+    background-color: #00b530;
+}
+
+.navigationbg{
+    background-color: #00b530;
+}
+
+.navmenus{
+    text-transform: capitalize;
+    text-decoration: none;
+    color: white;
+}
+
+.navbutton:hover{
+    color: #CC0000;
+}
+
+.navbutton{
+    background-color: #00b530;
+    border: 0;
+    color: white;
+}
+
+.fas {
+    color: white;
+}
+
+.fas:hover{
+    color: #CC0000;
+}
+
+.herosectionbanner{
+    position: relative;
+    text-align: center;
+}
+
+.tagline{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #CC0000;
+    background-color: whitesmoke;
+}
