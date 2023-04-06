@@ -33,11 +33,33 @@
            
             <div class="nav-icons">
                 <a class="fa-2x fas fa-user"></a>
-                <a class="fa-2x fas fa-shopping-cart"></a>
+                <a class="fa-2x fas fa-shopping-cart" data-bs-toggle="collapse" data-bs-target="#cart-details"></a>
                 <a class="fa-2x fa-solid fa-bars"></a>
             </div>
 
         </section>
+
+        <div class="cart-container">
+            <div class="collapse cart-menu" id="cart-details">
+                <div class="card card-body">
+                    <p id="cart-placeholder">Cart is Empty</p>
+                    <div class="product-container" id="cart" >
+                        <div class="product-item">
+                            <!-- push here the item -->
+                            <ul id="cart-items">
+                                <!-- <li> <img> </li> -->
+                                <!-- <li> <h6> </li> -->
+                                <!-- <li> <p> </li> -->
+                                <!-- <li> <i> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <h5>Total: ₱<span id="cart-total"></span></h5>
+                    <button>Place Order</button>
+                </div>
+            </div>
+        </div>
+
     </header>
     <!-- header section ends -->
   
