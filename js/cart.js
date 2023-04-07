@@ -2,6 +2,11 @@ let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const hidePholder = document.getElementById('cart-placeholder');
 
 function addToCart(event) {
+  
+  if (localStorage.getItem('isLoggedIn') === 'false') {
+    alert('You must be logged in to add items to your cart.');
+    window.scrollTo(0,0);
+  } else {
 
   const product = event.target.parentNode;
   const image = product.querySelector('img').src;
@@ -13,6 +18,8 @@ function addToCart(event) {
   
   displayCart();
 
+  }
+  
 }
 
 function displayCart() {
@@ -60,7 +67,7 @@ function displayCart() {
   
 }
 
-displayCart();
+// displayCart();
 
 function removeFromCart(event) {
 
