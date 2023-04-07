@@ -27,14 +27,20 @@
             <img src="./images/Jennie'sPizzaLogo.png" class="logo" href="#home" onclick="navigate('home')">
             
             <div class="nav-links">
-                <a href="#login" onclick="navigate('login')">Login</a>
                 <a href="#">About Us</a>
                 <a href="#">Menu</a>
             </div>
            
             <div class="nav-icons">
-                <a class="fa-2x fas fa-user"></a>
+                <button id="login-button" class="btn btn-danger btn-sm" onclick="navigate('login')">Login</button>
+                <div class="dropdown-center">
+                    <i id="user-button" class="fa-2x fas fa-user d-none" data-bs-toggle="dropdown"></i>
+                    <ul class="dropdown-menu">
+                        <li><button type="button" class="dropdown-item" onclick="logoutUser()">Logout</a></button>
+                    </ul>
+                </div>
                 <a class="fa-2x fas fa-shopping-cart" data-bs-toggle="collapse" data-bs-target="#cart-details"></a>
+                <!-- MENU FOR MOBILE -->
                 <a class="fa-2x fa-solid fa-bars"></a>
             </div>
 
