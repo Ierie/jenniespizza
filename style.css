@@ -43,6 +43,7 @@
   gap: 15px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .header .navigation .nav-icons a {
@@ -50,7 +51,15 @@
   color: white;
 }
 
+.header .navigation .nav-icons i {
+  color: white;
+}
+
 .header .navigation .nav-icons a:hover {
+  color: red;
+}
+
+.header .navigation .nav-icons i:hover {
   color: red;
 }
 
@@ -280,6 +289,10 @@ footer {
 
 .fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover {
   color: red;
+}
+
+.hidden {
+  display: none;
 }
 
 
