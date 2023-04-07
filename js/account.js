@@ -88,6 +88,7 @@ function logoutUser() {
   localStorage.setItem('isLoggedIn', 'false');
   loginButton.classList.remove('d-none');
   userButton.classList.add('d-none');
+  localStorage.clear();
   formReset();
 }
 
