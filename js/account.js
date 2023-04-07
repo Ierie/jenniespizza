@@ -10,7 +10,6 @@ const form = document.getElementsByTagName('form');
 
 registerForm.classList.add('hidden');
 
-
 showRegisterForm.addEventListener('click', function() {
   loadingRegister.classList.remove('d-none');
   setTimeout(() => {
@@ -29,12 +28,6 @@ showLoginForm.addEventListener('click', function() {
   }, 1000);
 });
 
-function formReset() {
-  const myForm = document.querySelector('form');
-  const formInputs = myForm.querySelectorAll('input');
-  formInputs.forEach(input => input.value = '');
-}
-
 let users = [];
 
 function registerUser() {
@@ -51,33 +44,57 @@ function registerUser() {
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
     alert("Registration successful!");
-    form.reset();
+    formReset();
   } else {
     alert("User already registered!");
   }
 
 }
 
+const loginButton = document.getElementById('login-button');
+const userButton = document.getElementById('user-button');
 
+window.onload = function () {
+  if (localStorage.getItem('isLoggedIn') === 'true') {
+    loginButton.classList.add('d-none');
+    userButton.classList.remove('d-none');
+  }
+}
 
 function loginUser() {
 
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
   const user = users.find((user) => user.email === email && user.password === password);
 
-  if (email === "" && password === "") {
-    alert('please input all the fields');
+  if (email === '' && password === '') {
+    alert('Please enter your email and password!');
   } else if (user) {
     alert(`Login successful! Welcome back ${user.name}!`);
-    const loginForm = document.getElementById('login-form');
+    loginButton.classList.add('d-none');
+    userButton.classList.remove('d-none');
+    localStorage.setItem('isLoggedIn', 'true');
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     formReset();
-  }  else {
-    alert("Invalid credentials!");
+  } else {
+    alert('Invalid email or password!');
   }
-
+  
 }
-console.log(form);
+
+function logoutUser() {
+  localStorage.setItem('isLoggedIn', 'false');
+  loginButton.classList.remove('d-none');
+  userButton.classList.add('d-none');
+  formReset();
+}
+
+function formReset() {
+  document.getElementById('login-form').reset();
+}
+
 function init() {
   const storedUsers = localStorage.getItem("users");
   if (storedUsers !== null) {
@@ -86,8 +103,6 @@ function init() {
 }
 
 init();
-console.log(localStorage.users);
-
 
 
 //Validate Login Form
