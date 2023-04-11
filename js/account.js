@@ -1,32 +1,34 @@
+// form
 const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
+// show login form and register form
 const showRegisterForm = document.getElementById('show-register');
 const showLoginForm = document.getElementById('show-login');
-
+// loading before show
 const loadingRegister = document.getElementById('loading-register');
 const loadingLogin = document.getElementById('loading-login');
-
-const form = document.getElementsByTagName('form');
-
+// set default hide register form
 registerForm.classList.add('hidden');
 
-showRegisterForm.addEventListener('click', function() {
+function signUp() {
   loadingRegister.classList.remove('d-none');
   setTimeout(() => {
     registerForm.classList.remove('hidden');
     loginForm.classList.add('hidden');
     loadingRegister.classList.add('d-none');
+    formReset(); 
   }, 1000);
-});
+};
 
-showLoginForm.addEventListener('click', function() {
+function signIn() {
   loadingLogin.classList.remove('d-none');
   setTimeout(() => {
     registerForm.classList.add('hidden');   
     loginForm.classList.remove('hidden');
     loadingLogin.classList.add('d-none');
+    formReset(); 
   }, 1000);
-});
+};
 
 let users = [];
 
@@ -43,7 +45,13 @@ function registerUser() {
     const user = { name, email, password };
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
-    alert("Registration successful!");
+    alert("Registration successful!"); 
+    loadingScreen.classList.remove('d-none');
+    setTimeout(() => {
+      loadingScreen.classList.add('d-none');
+      loginForm.classList.remove('hidden');
+      registerForm.classList.add('hidden'); 
+    }, 1500);
     formReset();
   } else {
     alert("User already registered!");
@@ -74,9 +82,11 @@ function loginUser() {
     loginButton.classList.add('d-none');
     userButton.classList.remove('d-none');
     localStorage.setItem('isLoggedIn', 'true');
+    loadingScreen.classList.remove('d-none');
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 1500);
+    
     formReset();
   } else {
     alert('Invalid email or password!');
@@ -88,13 +98,13 @@ function logoutUser() {
   localStorage.setItem('isLoggedIn', 'false');
   loginButton.classList.remove('d-none');
   userButton.classList.add('d-none');
+  loadingScreen.classList.remove('d-none');
+  setTimeout(() => {
+    window.location.reload();
+  }, 1500);
   localStorage.clear();
-  formReset();
 }
 
-function formReset() {
-  document.getElementById('login-form').reset();
-}
 
 function init() {
   const storedUsers = localStorage.getItem("users");
@@ -248,4 +258,29 @@ function validateRegisterForm() {
   
 }
 
+
+const loginInput = document.getElementById('loginForm');
+const registerInput = document.getElementById('registerForm');
+
+function formReset() {
+  // reset input fields 
+  loginInput.reset();
+  registerInput.reset();
+  // reset login error
+  loginEmailError.classList.add('d-none');
+  loginPasswordError.classList.add('d-none');
+  loginEmail.classList.remove('is-invalid');
+  loginPassword.classList.remove('is-invalid');
+  // reset register error
+  firstName.classList.remove('is-invalid');
+  lastName.classList.remove('is-invalid');
+  registerEmail.classList.remove('is-invalid');
+  registerPassword.classList.remove('is-invalid');
+  confirmPassword.classList.remove('is-invalid');
+  firstNameError.classList.add('d-none');
+  lastNameError.classList.add('d-none');
+  registerEmailError.classList.add('d-none');
+  registerPasswordError.classList.add('d-none');
+  confirmPasswordError.classList.add('d-none');
+}
 

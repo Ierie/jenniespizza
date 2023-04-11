@@ -3,20 +3,23 @@ const hidePholder = document.getElementById('cart-placeholder');
 
 function addToCart(event) {
   
-  if (localStorage.getItem('isLoggedIn') === 'false') {
-    alert('You must be logged in to add items to your cart.');
-    window.scrollTo(0,0);
+  if (localStorage.getItem('isLoggedIn') === 'true') {
+    
+    alert('added to box');
+    const product = event.target.parentNode;
+    const image = product.querySelector('img').src;
+    const title = product.querySelector('h5').innerText;
+    const price = product.querySelector('p').innerText.replace('₱', '');
+    
+    cartItems.push({image: image, title: title, price: price});
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+    displayCart();
+
   } else {
 
-  const product = event.target.parentNode;
-  const image = product.querySelector('img').src;
-  const title = product.querySelector('h5').innerText;
-  const price = product.querySelector('p').innerText.replace('₱', '');
-  
-  cartItems.push({image: image, title: title, price: price});
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  
-  displayCart();
+    alert('You must be logged in to add items to your cart.');
+    window.scrollTo(0,0);
 
   }
   
