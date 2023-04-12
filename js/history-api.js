@@ -1,3 +1,5 @@
+  const loadingScreen = document.getElementById('loading-screen');
+  
   // Define the initial state
   window.history.replaceState({ page: 'home' }, 'home', '#home');
 
@@ -10,8 +12,14 @@
       }
 
       // show current page
-      const currentPage = document.getElementById(pageName);
-      currentPage.classList.remove('hidden');
+      loadingScreen.classList.remove('d-none');
+      
+      setTimeout(() => {
+        const currentPage = document.getElementById(pageName);
+        currentPage.classList.remove('hidden');
+        loadingScreen.classList.add('d-none');
+      }, 2000);
+
 
   }
 

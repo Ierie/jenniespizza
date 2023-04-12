@@ -14,6 +14,7 @@
 
 .header .navigation .logo {
   height: 90%;
+  cursor: pointer;
 }
 
 .header .navigation .nav-links {
@@ -43,6 +44,7 @@
   gap: 15px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .header .navigation .nav-icons a {
@@ -50,7 +52,16 @@
   color: white;
 }
 
+.header .navigation .nav-icons i {
+  cursor: pointer;
+  color: white;
+}
+
 .header .navigation .nav-icons a:hover {
+  color: red;
+}
+
+.header .navigation .nav-icons i:hover {
   color: red;
 }
 
@@ -60,27 +71,27 @@
 
 
 .pizzacategories {
-    height: 60vh;
+  height: 60vh;
 }
 
-.pizzamenu{
-    width: 100%;
+.pizzamenu {
+  width: 100%;
 }
 
 .categorybutton {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
-.menuheading{
-    font-family: Verdana;
+.menuheading {
+  font-family: Verdana;
 }
 
-.legends{
-    max-width: 80%;
+.legends {
+  max-width: 80%;
 }
 
-.legenditems{
-    font-size: x-small;
+.legenditems {
+  font-size: x-small;
 }
 
 
@@ -165,7 +176,7 @@
     transform: rotate(-135deg);
   }
    */
-  /* Icon 3*/
+/* Icon 3*/
 /*   
   .animated-icon2 span:nth-child(1) {
     top: 0px;
@@ -205,9 +216,9 @@
     left: 50%;
   }
    */
-  /* Icon 4 */
-  
-  /* .animated-icon3 span:nth-child(1) {
+/* Icon 4 */
+
+/* .animated-icon3 span:nth-child(1) {
     top: 0px;
     -webkit-transform-origin: left center;
     -moz-transform-origin: left center;
@@ -258,14 +269,14 @@
 
 
 .social-icons {
-    font-size: 36px;
-    cursor: pointer;
+  font-size: 36px;
+  cursor: pointer;
 }
 
 /* footer styling */
 footer {
-    background-color: #00b530;
-    text-align: center;
+  background-color: #00b530;
+  text-align: center;
 }
 
 .credit {
@@ -278,9 +289,42 @@ footer {
   color: white;
 }
 
-.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover {
+.fa-facebook:hover,
+.fa-instagram:hover,
+.fa-twitter:hover {
   color: red;
 }
+
+.hidden {
+  display: none;
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #00b530;
+  -webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 70deg, #0000 71deg 90deg),
+    radial-gradient(farthest-side, #0000 calc(100% - 15.8px), #000 calc(100% - 14.1px));
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: spinner-mv2oco 1s infinite;
+}
+
+@keyframes spinner-mv2oco {
+  to {
+    transform: rotate(.5turn);
+  }
+}
+
 
 
 /* END MODAL STYLE */
@@ -291,6 +335,7 @@ footer {
     display: none;
   }
 }
+
 /* FOR DESKTOP */
 @media screen and (min-width: 801px) {
   .header .navigation .nav-icons a:last-of-type {
