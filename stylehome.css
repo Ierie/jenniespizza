@@ -54,7 +54,8 @@
 /* Style the tab */
 .tab {
     background-color: #CC0000;
-    width: 25%;
+    width: 30%;
+    height: auto;
   }
   
   /* Style the buttons inside the tab */
@@ -64,18 +65,23 @@
     color: white;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 1rem;
-  }
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
   
   /* Change background color of buttons on hover */
   .tab button:hover {
     background-color: #00b530;
-  }
+}
   
   /* Create an active/current "tab button" class */
   .tab button.active {
     background-color: #00b530;
-  }
+}
+
+.tabcontent{
+    width: 65%;
+}
   
 
 .menuheading{
@@ -91,5 +97,9 @@
 }
 
 .pizzaproductcard{
-    width: 12rem;
+    width: 11rem;
+}
+
+.aboutus{
+    background-color: #00b530;
 }
