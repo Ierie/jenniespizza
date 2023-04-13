@@ -21,8 +21,39 @@
 
     <header class="header">
 
-        <div class="navigation">
-            <img src="./images/Jennie'sPizzaLogo.png" class="logo" onclick="navigate('home')">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="home.html">
+                <img src="./images/Jennie'sPizzaLogo.png" class="logo" width="180" onclick="navigate('home')">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse px-3" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#about">ABOUT US</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#menu">Menu</a>
+                  </li>
+                </ul>
+                <div class="nav-icons d-flex justify-content-center pb-3">
+                    <button id="login-button" class="btn btn-danger btn-sm p-1" onclick="navigate('login')">Login</button>
+                    <div class="dropdown-center p-1">
+                        <i id="user-button" class="fa-2x fas fa-user d-none" data-bs-toggle="dropdown"></i>
+                        <ul class="dropdown-menu p-1">
+                            <li><button type="button" class="dropdown-item" onclick="logoutUser()">Logout</a></button>
+                        </ul>
+                    </div>
+                    <i class="fa-2x fas fa-shopping-cart p-1" data-bs-toggle="collapse" data-bs-target="#cart-details"></i>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+        <!-- <div class="navigation">
+            
             <div class="nav-links">
                 <a href="#about">About Us</a>
                 <a href="#menu">Menu</a>
@@ -35,11 +66,11 @@
                         <li><button type="button" class="dropdown-item" onclick="logoutUser()">Logout</a></button>
                     </ul>
                 </div>
-                <i class="fa-2x fas fa-shopping-cart" data-bs-toggle="collapse" data-bs-target="#cart-details"></i>
+                <i class="fa-2x fas fa-shopping-cart" data-bs-toggle="collapse" data-bs-target="#cart-details"></i> -->
                 <!-- MENU FOR MOBILE -->
-                <a class="fa-2x fa-solid fa-bars"></a>
+                <!-- <a class="fa-2x fa-solid fa-bars"></a>
             </div>
-        </div>
+        </div> -->
 
         <div class="cart-container">
             <div class="collapse cart-menu" id="cart-details">

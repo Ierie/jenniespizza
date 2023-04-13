@@ -10,6 +10,20 @@
     position: relative;
 }
 
+.navbar-collapse{
+    background-color: #00b530;
+}
+
+.nav-link{
+    color: white;
+    text-transform: uppercase;
+}
+
+.fa-shopping-cart{
+    color: #CC0000;
+}
+
+
 /* .header {
     background-color: #00b530;
 }
