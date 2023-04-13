@@ -1,17 +1,34 @@
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const hidePholder = document.getElementById('cart-placeholder');
 
+
+const pizzaSizeSelect = document.getElementById('pizza-size');
+const selectedOptionText = document.getElementById('pizza-prize');
+pizzaSizeSelect.addEventListener('change', function() {
+  const selectedOption = pizzaSizeSelect.options[pizzaSizeSelect.selectedIndex];
+  if (selectedOption.value === '9') {
+    selectedOptionText.innerText = '₱275';
+  } else if (selectedOption.value === '12') {
+    selectedOptionText.innerText = '₱445';
+  } else if (selectedOption.value === '18') {
+    selectedOptionText.innerText = '₱575';
+  }
+});
+
 function addToCart(event) {
   
   if (localStorage.getItem('isLoggedIn') === 'true') {
     
     alert('added to box');
+    displayCartNotif();
+    
     const product = event.target.parentNode;
     const image = product.querySelector('img').src;
     const title = product.querySelector('h5').innerText;
+    const size = product.querySelector('select').value;
     const price = product.querySelector('p').innerText.replace('₱', '');
     
-    cartItems.push({image: image, title: title, price: price});
+    cartItems.push({image: image, title: title, price: price, size: size});
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     
     displayCart();
@@ -45,6 +62,10 @@ function displayCart() {
     const titleElement = document.createElement('h6');
     titleElement.innerText = item.title;
     listItem.appendChild(titleElement);
+
+    const sizeElement = document.createElement('h6');
+    sizeElement.innerText = item.size + ' inches';
+    listItem.appendChild(sizeElement);
   
     const priceElement = document.createElement('p');
     let priceValue = item.price.replace(/[^0-9.-]+/g,"");
@@ -80,4 +101,16 @@ function removeFromCart(event) {
 
   displayCart();
 
+}
+
+function displayCartNotif() {
+  const cartNotif = document.getElementById('cart-notif');
+  cartNotif.classList.remove('d-none');
+  let currentNumber = parseInt(cartNotif.innerText) || 0;
+  cartNotif.innerText = currentNumber + 1;
+  const resetButton = document.getElementById('cart-button');
+  resetButton.addEventListener('click', function() {
+    cartNotif.classList.add('d-none');
+    cartNotif.innerText = 0;
+  });
 }
