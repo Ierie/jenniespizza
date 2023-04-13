@@ -396,7 +396,6 @@
 
                                 <div class="col d-flex justify-content-center my-3">
                                     <div class="card pizzaproductcard">
-                                        <!-- <a data-bs-toggle="modal" data-bs-target="#baconGlazed"> -->
                                         <div class="card-body text-center">
                                             <img src="images/Pizza_Products/Bacon-Glazed_1.png" class="card-img-top"
                                                 alt="Bacon Glazed Pizza">
@@ -410,7 +409,6 @@
                                                 <option value="18">18 inches</option>
                                             </select>
 
-                                            <!-- </a> -->
                                             <p id="pizza-prize" class="card-text py-3 px-0">Starts at ₱275</p>
                                             <button class="btn btn-success" onclick="addToCart(event)">Add To
                                                 Box</button>
@@ -418,42 +416,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="baconGlazed" tabindex="-1"
-                                    aria-labelledby="baconGlazedLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Bacon-Glazed_1.png"
-                                                        alt="Bacon Glazed Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Bacon Glazed Pizza</h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Beef N Onion Pizza -->
                                 <!-- Beef N Onion Pizza -->
 
                                 <div class="col d-flex justify-content-center my-3">
@@ -465,45 +428,19 @@
                                                 <h5 class="card-title fw-bold">
                                                     Beef N Onion Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>                                                
+
                                                 <p class="card-text"> Starts at ₱275</p>
-                                                <button class="btn btn-success" onclick="addToCart(event)">Select
-                                                    Size</button>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Box
+                                                </button>
                                             </div>
                                         </a>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="beefOnion" tabindex="-1" aria-labelledby="beefOnionLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Beef-n-Onion.png"
-                                                        alt="Beef Onion Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Beef N Onion Pizza</h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
 
@@ -521,45 +458,18 @@
                                                 <h5 class="card-title fw-bold">
                                                     Carbonara Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
                                                 <p class="card-text"> Starts at ₱275</p>
                                                 <button class="btn btn-success" onclick="addToCart(event)">Select
                                                     Size</button>
                                             </div>
                                         </a>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="carbonaraPizza" tabindex="-1"
-                                    aria-labelledby="carbonaraPizzaLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Carbonara Pizza.png"
-                                                        alt="Carbonara Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Carbonara Pizza</h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
 
@@ -577,6 +487,13 @@
                                                 <h5 class="card-title fw-bold">
                                                     Cheesy Spinach Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
                                                 <p class="card-text"> Starts at ₱275</p>
                                                 <button class="btn btn-success" onclick="addToCart(event)">Select
                                                     Size</button>
@@ -585,39 +502,6 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="cheesySpinach" tabindex="-1"
-                                    aria-labelledby="cheesySpinachLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Cheesy Spinach.png"
-                                                        alt="Cheesy Spinach Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Cheesy Spinach Pizza</h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Crunchy Pepperoni Pizza -->
 
@@ -630,6 +514,13 @@
                                                 <h5 class="card-title fw-bold">
                                                     Crunchy Pepperoni Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
                                                 <p class="card-text"> Starts at ₱275</p>
                                                 <button class="btn btn-success" onclick="addToCart(event)">Select
                                                     Size</button>
@@ -637,42 +528,6 @@
                                         </a>
                                     </div>
                                 </div>
-
-                                <div class="modal fade" id="crunchyPepperoni" tabindex="-1"
-                                    aria-labelledby="crunchyPepperoniLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Crunchy Pepperoni.png"
-                                                        alt="Crunchy Pepperoni Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Crunchy Pepperoni Pizza
-                                                    </h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
 
 
 
@@ -688,45 +543,18 @@
                                                 <h5 class="card-title fw-bold">
                                                     Hi Protein Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
                                                 <p class="card-text"> Starts at ₱275</p>
                                                 <button class="btn btn-success" onclick="addToCart(event)">Select
                                                     Size</button>
                                             </div>
                                         </a>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="hiProtein" tabindex="-1" aria-labelledby="hiProteinLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Hi-protein.png"
-                                                        alt="Hi Protein Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Hi Protein Pizza</h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
 
@@ -743,45 +571,18 @@
                                                 <h5 class="card-title fw-bold">
                                                     Jennie's First Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
                                                 <p class="card-text"> Starts at ₱275</p>
                                                 <button class="btn btn-success" onclick="addToCart(event)">Select
                                                     Size</button>
                                             </div>
                                         </a>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="jenniesFirst" tabindex="-1"
-                                    aria-labelledby="jenniesFirstLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Jennie's First Pizza.png"
-                                                        alt="Jennie's First Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Jennie's First Pizza</h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
 
@@ -798,46 +599,18 @@
                                                 <h5 class="card-title fw-bold">
                                                     Spinach and Mushroom Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
                                                 <p class="card-text"> Starts at ₱275</p>
                                                 <button class="btn btn-success" onclick="addToCart(event)">Select
                                                     Size</button>
                                             </div>
                                         </a>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="spinachMushroom" tabindex="-1"
-                                    aria-labelledby="spinachMushroomLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Spinach--Mushroom-Prod-images-500x500.png"
-                                                        alt="Spinach and Mushroom Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Spinach and Mushroom Pizza
-                                                    </h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
 
@@ -854,45 +627,18 @@
                                                 <h5 class="card-title fw-bold">
                                                     Truffle Cheese Pizza
                                                 </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
                                                 <p class="card-text"> Starts at ₱275</p>
                                                 <button class="btn btn-success" onclick="addToCart(event)">Select
                                                     Size</button>
                                             </div>
                                         </a>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="truffle" tabindex="-1" aria-labelledby="truffleLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="images/Pizza_Products/Truffle Cheese.png"
-                                                        alt="Truffle Cheese Pizza" width="200">
-                                                </div>
-                                                <div>
-                                                    <h2 class="display-6 fw-bold text-center">Truffle Cheese Pizza</h2>
-                                                </div>
-                                                <div>
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        required>
-                                                        <option selected>Select Size</option>
-                                                        <option value="1">9" - ₱275</option>
-                                                        <option value="2">12" - ₱445</option>
-                                                        <option value="2">18" - ₱575</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <a class="btn btn-success" role="button">Add To Bag</a>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
 
