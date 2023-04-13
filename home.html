@@ -22,6 +22,7 @@
     <header class="header">
 
         <div class="navigation">
+
             <img src="./images/Jennie'sPizzaLogo.png" class="logo" onclick="navigate('home')">
             <div class="nav-links">
                 <a href="#about">About Us</a>
@@ -35,7 +36,13 @@
                         <li><button type="button" class="dropdown-item" onclick="logoutUser()">Logout</a></button>
                     </ul>
                 </div>
-                <i class="fa-2x fas fa-shopping-cart" data-bs-toggle="collapse" data-bs-target="#cart-details"></i>
+                <i id="cart-button" class="fa-2x fas fa-shopping-cart" data-bs-toggle="collapse"
+                    data-bs-target="#cart-details">
+                    <span id="cart-notif"
+                        class="position-absolute translate-middle badge rounded-circle bg-danger d-none number"
+                        style="font-size: 12px">
+                    </span>
+                </i>
                 <!-- MENU FOR MOBILE -->
                 <a class="fa-2x fa-solid fa-bars"></a>
             </div>
@@ -105,7 +112,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="./images/Pizza_Products/Bianca_s0IJoXY.png" width="100%" height="500px"
+                            <img src="./images/Pizza_Products/Jennie Pizza Bundle 3.png" width="100%" height="500px"
                                 style="object-fit: cover;">
                             <div class="container">
                                 <div class="carousel-caption text-end">
