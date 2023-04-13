@@ -105,6 +105,14 @@
     width: 11rem;
 }
 
+#about {
+    background-color: black;
+}
+
 .aboutus {
-    background-color: #00b530;
+    color: white;
+}
+
+.contactdetails{
+    color: white;
 }
