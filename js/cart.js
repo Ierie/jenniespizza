@@ -1,11 +1,13 @@
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const hidePholder = document.getElementById('cart-placeholder');
-
+  
 function addToCart(event) {
   
   if (localStorage.getItem('isLoggedIn') === 'true') {
     
     alert('added to box');
+    displayCartNotif();
+    
     const product = event.target.parentNode;
     const image = product.querySelector('img').src;
     const title = product.querySelector('h5').innerText;
@@ -80,4 +82,16 @@ function removeFromCart(event) {
 
   displayCart();
 
+}
+
+function displayCartNotif() {
+  const cartNotif = document.getElementById('cart-notif');
+  cartNotif.classList.remove('d-none');
+  let currentNumber = parseInt(cartNotif.innerText) || 0;
+  cartNotif.innerText = currentNumber + 1;
+  const resetButton = document.getElementById('cart-button');
+  resetButton.addEventListener('click', function() {
+    cartNotif.classList.add('d-none');
+    cartNotif.innerText = 0;
+  });
 }
