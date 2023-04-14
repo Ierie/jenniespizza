@@ -32,7 +32,8 @@ function addToCart(event) {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     
     displayCart();
-
+    displayCartInForm();
+    
   } else {
 
     alert('You must be logged in to add items to your cart.');
@@ -100,6 +101,7 @@ function removeFromCart(event) {
   cartItems.splice(index, 1);
 
   displayCart();
+  updateOrderList(cartItems);
 
 }
 
