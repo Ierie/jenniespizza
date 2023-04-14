@@ -2,17 +2,22 @@ let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 const hidePholder = document.getElementById('cart-placeholder');
 
 
-const pizzaSizeSelect = document.getElementById('pizza-size');
-const selectedOptionText = document.getElementById('pizza-prize');
-pizzaSizeSelect.addEventListener('change', function() {
-  const selectedOption = pizzaSizeSelect.options[pizzaSizeSelect.selectedIndex];
-  if (selectedOption.value === '9') {
-    selectedOptionText.innerText = '₱275';
-  } else if (selectedOption.value === '12') {
-    selectedOptionText.innerText = '₱445';
-  } else if (selectedOption.value === '18') {
-    selectedOptionText.innerText = '₱575';
-  }
+const selectedOptionTexts = document.querySelectorAll('.pizza-price');
+const pizzaSizeSelects = document.querySelectorAll('#pizza-size');
+
+pizzaSizeSelects.forEach(function(pizzaSizeSelect) {
+  const selectedOptionText = pizzaSizeSelect.nextElementSibling;
+  
+  pizzaSizeSelect.addEventListener('change', function() {
+    const selectedOption = pizzaSizeSelect.options[pizzaSizeSelect.selectedIndex];
+    if (selectedOption.value === '9') {
+      selectedOptionText.innerText = '₱275';
+    } else if (selectedOption.value === '12') {
+      selectedOptionText.innerText = '₱445';
+    } else if (selectedOption.value === '18') {
+      selectedOptionText.innerText = '₱575';
+    }
+  });
 });
 
 function addToCart(event) {
