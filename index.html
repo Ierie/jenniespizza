@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jennie's Pizza</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylehome.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/order.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <section class="navigation">
+            <img src="./images/Jennie'sPizzaLogo.png" class="logo" height="150" onclick="navigate('home')">
+            <div class="nav-links">
+                <a href="#about">About Us</a>
+                <a href="#menu">Menu</a>
+            </div>
+            <div class="nav-icons">
+                <button id="login-button" class="btn btn-danger btn-sm" onclick="navigate('login')">Login</button>
+                <div class="dropdown-center">
+                    <i id="user-button" class="fa-2x fas fa-user d-none" data-bs-toggle="dropdown"></i>
+                    <ul class="dropdown-menu">
+                        <li><button type="button" class="dropdown-item" onclick="logoutUser()">Logout</a></button>
+                    </ul>
+                </div>
+                <i id="cart-button" class="fa-2x fas fa-shopping-cart" data-bs-toggle="collapse"
+                    data-bs-target="#cart-details">
+                    <span id="cart-notif"
+                        class="position-absolute translate-middle badge rounded-circle bg-danger d-none number"
+                        style="font-size: 12px">
+                    </span>
+                </i>
+                <!-- MENU FOR MOBILE -->
+                <a class="fa-2x fa-solid fa-bars"></a>
+            </div>
+        </section>
+
+        <!-- CART -->
+        <div class="cart-container">
+            <div class="collapse cart-menu" id="cart-details">
+                <div class="card card-body">
+                    <p id="cart-placeholder">Cart is Empty</p>
+                    <div class="product-container" id="cart">
+                        <div class="product-item">
+                            <!-- push here the item -->
+                            <ul id="cart-items">
+                                <!-- <li> <img> </li> -->
+                                <!-- <li> <h6> </li> -->
+                                <!-- <li> <p> </li> -->
+                                <!-- <li> <i> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <h5>Total: ₱<span id="cart-total"></span></h5>
+                    <button class="btn btn-primary" onclick="placeOrder()">Place Order</button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+
+        <div id="loading-screen" class="loading d-none">
+            <div class="spinner"></div>
+        </div>
+
+        <div id="home" class="page">
+
+            <div class="herosectionbanner" style="z-index: 1;">
+                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./images/project-banner.png" width="100%" height="500px"
+                                style="object-fit: cover;">
+                            <div class="container">
+                                <div class="carousel-caption p-2 text-center">
+                                    <h1>Basta, Masarap!</h1>
+                                    <p>Have a taste of Jennie's Pizza.</p>
+                                    <p><a class="btn btn-lg btn-danger" href="#menu">Order Now</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./images/Pizza_Products/Jennie's Special Thick.jpg" width="100%" height="500px"
+                                style="object-fit: cover;">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h1>Order Pizza Bundles For Discounts!</h1>
+                                    <p><a class="btn btn-lg btn-danger" href="#PizzaBundles">Learn more</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="pizzamainmenu d-flex flex-row" id="menu">
+
+                <div class="tab btn-group-vertical" role="group" aria-label="Vertical button group">
+                    <button type="button" class="tablinks btn btn-danger text-center"
+                        onclick="openCategory(event, 'PizzaBundles')">Pizza Bundles</button>
+                    <button type="button" class="tablinks btn btn-danger text-center"
+                        onclick="openCategory(event, 'RegularCrustPizza')">Regular Crust Pizza</button>
+                    <button type="button" class="tablinks btn btn-danger text-center"
+                        onclick="openCategory(event, 'ThinCrustPizza')">Thin Crust Pizza</button>
+                    <button type="button" class="tablinks btn btn-danger text-center"
+                        onclick="openCategory(event, 'VeggiePizza')">Veggie Pizza</button>
+                    <button type="button" class="tablinks btn btn-danger text-center"
+                        onclick="openCategory(event, 'AllMeatPizza')">All-Meat Pizza</button>
+                    <button type="button" class="tablinks btn btn-danger text-center"
+                        onclick="openCategory(event, 'Drinks')">Drinks</button>
+                </div>
+
+                <div id="PizzaBundles" class="tabcontent pt-3">
+                    <div class="container-fluid">
+                        <div class="menuheading">
+                            <h1 class="display-6 fw-bold text-uppercase">Pizza Bundles</h1>
+                        </div>
+                        <div class="legends">
+                            <div class="row legenditems">
+                                <div class="col">
+                                    <img src="images/favourites.png" alt="bestseller" width="15">
+                                    Bestseller
+                                </div>
+                                <div class="col">
+                                    <img src="images/red-chili-pepper.png" alt="spicy" width="15">
+                                    Spicy
+                                </div>
+                                <div class="col">
+                                    <img src="images/new.png" alt="bestseller" width="15">
+                                    New Flavor
+                                </div>
+                                <div class="col">
+                                    <img src="images/limited.png" alt="bestseller" width="15">
+                                    Limited Offer
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+
+                            <div class="row">
+
+                                <!-- Pizza Bundle 1 -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#pizzaBundle1">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Jennie Pizza Product Bundle 1.png"
+                                                    class="card-img-top" alt="Pizza Bundle 1">
+                                                <h5 class="card-title fw-bold">
+                                                    Double 9-inch Pizza Bundle
+                                                </h5>
+
+                                                <div>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        required>
+                                                        <option selected>Select Pizza 1</option>
+                                                        <option value="1">Four Cheese</option>
+                                                        <option value="2">Cheesy Spinach</option>
+                                                        <option value="3">Hawaiian</option>
+                                                    </select>
+
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        required>
+                                                        <option selected>Select Pizza 2</option>
+                                                        <option value="1">Beef and Onion</option>
+                                                        <option value="2">Pepperoni</option>
+                                                        <option value="3">Jennie's First</option>
+                                                        <option value="4">Jennie's Special</option>
+                                                    </select>
+                                                </div>                                                
+
+                                                <p class="card-text">₱499</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                <!-- Pizza Bundle 2 -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#pizzaBundle2">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Jennie Pizza Bundle 2.png"
+                                                    class="card-img-top" alt="Pizza Bundle 2">
+                                                <h5 class="card-title fw-bold">
+                                                    Double 12-inch Pizza Bundle
+                                                </h5>
+
+                                                <div>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        required>
+                                                        <option selected>Select Pizza 1</option>
+                                                        <option value="1">Four Cheese</option>
+                                                        <option value="2">Cheesy Spinach</option>
+                                                        <option value="3">Hawaiian</option>
+                                                    </select>
+
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        required>
+                                                        <option selected>Select Pizza 2</option>
+                                                        <option value="1">Beef and Onion</option>
+                                                        <option value="2">Pepperoni</option>
+                                                        <option value="3">Jennie's First</option>
+                                                        <option value="4">Jennie's Special</option>
+                                                    </select>
+                                                </div>
+
+                                                <p class="card-text">₱799</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Pizza Bundle 3 -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#pizzaBundle3">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Jennie Pizza Bundle 3.png"
+                                                    class="card-img-top" alt="Pizza Bundle 3">
+                                                <h5 class="card-title fw-bold">
+                                                    Double 18-inch Pizza Bundle
+                                                </h5>
+
+                                                <div>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        required>
+                                                        <option selected>Select Pizza 1</option>
+                                                        <option value="1">Four Cheese</option>
+                                                        <option value="2">Cheesy Spinach</option>
+                                                        <option value="3">Hawaiian</option>
+                                                    </select>
+
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        required>
+                                                        <option selected>Select Pizza 2</option>
+                                                        <option value="1">Beef and Onion</option>
+                                                        <option value="2">Pepperoni</option>
+                                                        <option value="3">Jennie's First</option>
+                                                        <option value="4">Jennie's Special</option>
+                                                    </select>
+                                                </div>
+
+                                                <p class="card-text">₱999</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="RegularCrustPizza" class="tabcontent pt-3">
+                    <div class="container-fluid">
+                        <div class="menuheading">
+                            <h1 class="display-6 fw-bold text-uppercase">
+                                Regular Crust Pizzas
+                            </h1>
+                        </div>
+                        <div class="legends">
+                            <div class="row legenditems">
+                                <div class="col">
+                                    <img src="images/favourites.png" alt="bestseller" width="15">
+                                    Bestseller
+                                </div>
+                                <div class="col">
+                                    <img src="images/red-chili-pepper.png" alt="spicy" width="15">
+                                    Spicy
+                                </div>
+                                <div class="col">
+                                    <img src="images/new.png" alt="bestseller" width="15">
+                                    New Flavor
+                                </div>
+                                <div class="col">
+                                    <img src="images/limited.png" alt="bestseller" width="15">
+                                    Limited Offer
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+
+                            <div class="row">
+
+                                <!-- Bacon Glazed Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Bacon-Glazed_1.png" class="card-img-top"
+                                                alt="Bacon Glazed Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Bacon Glazed Pizza
+                                            </h5>
+
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+
+                                            <p id="pizza-prize" class="card-text py-3 px-0">Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To
+                                                Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Beef N Onion Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#beefOnion">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Beef-n-Onion.png" class="card-img-top"
+                                                    alt="Beef N Onion Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Beef N Onion Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>                                                
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+
+                                <!-- Carbonara Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#carbonaraPizza">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Carbonara Pizza.png"
+                                                    class="card-img-top" alt="Carbonara Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Carbonara Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+
+                                <!-- Cheesy Spinach Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#cheesySpinach">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Cheesy Spinach.png" class="card-img-top"
+                                                    alt="Cheesy Spinach Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Cheesy Spinach Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                <!-- Crunchy Pepperoni Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#crunchyPepperoni">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Crunchy Pepperoni.png"
+                                                    class="card-img-top" alt="Crunchy Pepperoni Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Crunchy Pepperoni Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+
+                                <!-- Hi Protein Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#hiProtein">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Hi-protein.png" class="card-img-top"
+                                                    alt="Hi Protein Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Hi Protein Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- Jennie's First Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#jenniesFirst">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Jennie's First Pizza.png"
+                                                    class="card-img-top" alt="Jennie's First Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Jennie's First Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- Spinach and Mushroom Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#spinachMushroom">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Spinach--Mushroom-Prod-images-500x500.png"
+                                                    class="card-img-top" alt="Spinach and Mushroom Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Spinach and Mushroom Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- Truffle Cheese Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#truffle">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Truffle Cheese.png" class="card-img-top"
+                                                    alt="Truffle Cheese Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Truffle Cheese Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="ThinCrustPizza" class="tabcontent pt-3">
+                    <div class="container-fluid">
+                        <div class="menuheading">
+                            <h1 class="display-6 fw-bold text-uppercase">
+                                Thin Crust Pizzas
+                            </h1>
+                        </div>
+                        <div class="legends">
+                            <div class="row legenditems">
+                                <div class="col">
+                                    <img src="images/favourites.png" alt="bestseller" width="15">
+                                    Bestseller
+                                </div>
+                                <div class="col">
+                                    <img src="images/red-chili-pepper.png" alt="spicy" width="15">
+                                    Spicy
+                                </div>
+                                <div class="col">
+                                    <img src="images/new.png" alt="bestseller" width="15">
+                                    New Flavor
+                                </div>
+                                <div class="col">
+                                    <img src="images/limited.png" alt="bestseller" width="15">
+                                    Limited Offer
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-center">
+                            <div class="row">
+
+                                <!-- Spicy Cheese Burger Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#spicyCheeseBurger">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Spicy CheeeseBurger Pizza.jpg"
+                                                    class="card-img-top" alt="Spicy Cheese Burger Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Spicy Cheese Burger Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Four Cheese Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#fourCheese">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Four Cheese.jpg" class="card-img-top"
+                                                    alt="Four Cheese Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Four Cheese Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Jennie's Special Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#jenniesSpecial">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Jennie's Special Thick.jpg"
+                                                    class="card-img-top" alt="Jennie's Special">
+                                                <h5 class="card-title fw-bold">
+                                                    Jennie's Special Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Chicken BBQ Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#chickenBbq">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/OG - BBQ CHICKEN.jpg"
+                                                    class="card-img-top" alt="Chicken BBQ Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Chicken BBQ Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Garden Special Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#gardenSpecial">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/OG - GARDEN SPECIAL.jpg"
+                                                    class="card-img-top" alt="Garden Special Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Garden Special Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Hawaiian Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#hawaiian">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/OG - HAWAIIAN.jpg" class="card-img-top"
+                                                    alt="Hawaiian Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Hawaiian Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Pepperoni Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#pepperoni">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/OG - PEPPERONI.jpg" class="card-img-top"
+                                                    alt="Pepperoni Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Pepperoni Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Roasted Garlic and Shrimp Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#garlicShrimp">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/OG - ROASTED GARLIC AND SHRIMP.jpg"
+                                                    class="card-img-top" alt="Roasted Garlic and Shrimp Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Roasted Garlic and Shrimp Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Pork and Beef Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#porkBeef">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Pork And Beef.jpg" class="card-img-top"
+                                                    alt="Pork and Beef Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Pork and Beef Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Roast Beef Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#roastBeef">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Roast_Beef_web_and_app_6AQdduY.png"
+                                                    class="card-img-top" alt="Roast Beef Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Roast Beef Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Bacon Glazed Thin Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#baconGlazedThin">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Bacon-Glazed_1.png" class="card-img-top"
+                                                    alt="Bacon Glazed Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Bacon Glazed Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="VeggiePizza" class="tabcontent pt-3">
+                    <div class="container-fluid">
+                        <div class="menuheading">
+                            <h1 class="display-6 fw-bold text-uppercase">
+                                Veggie Pizza
+                            </h1>
+                        </div>
+                        <div class="legends">
+                            <div class="row legenditems">
+                                <div class="col">
+                                    <img src="images/favourites.png" alt="bestseller" width="15">
+                                    Bestseller
+                                </div>
+                                <div class="col">
+                                    <img src="images/red-chili-pepper.png" alt="spicy" width="15">
+                                    Spicy
+                                </div>
+                                <div class="col">
+                                    <img src="images/new.png" alt="bestseller" width="15">
+                                    New Flavor
+                                </div>
+                                <div class="col">
+                                    <img src="images/limited.png" alt="bestseller" width="15">
+                                    Limited Offer
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <div class="row">
+
+                                <!-- Garden Special Pizza
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <a data-bs-toggle="modal" data-bs-target="#gardenSpecialV">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/OG - GARDEN SPECIAL.jpg"
+                                                    class="card-img-top" alt="Garden Special Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Garden Special Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">
+                                                    Add To Cart    
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div> -->
+
+                                <!-- Spinach and Mushroom Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Spinach--Mushroom-Prod-images-500x500.png"
+                                                    class="card-img-top" alt="Spinach and Mushroom Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Spinach and Mushroom Pizza
+                                                </h5>
+
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Cheesy Spinach Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Cheesy Spinach.png" class="card-img-top"
+                                                alt="Cheesy Spinach Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Cheesy Spinach Pizza
+                                            </h5>
+
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+
+                                            <p class="card-text"> Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="AllMeatPizza" class="tabcontent pt-3">
+                    <div class="container-fluid">
+                        <div class="menuheading">
+                            <h1 class="display-6 fw-bold text-uppercase">
+                                All-Meat Pizza
+                            </h1>
+                        </div>
+                        <div class="legends">
+                            <div class="row legenditems">
+                                <div class="col">
+                                    <img src="images/favourites.png" alt="bestseller" width="15">
+                                    Bestseller
+                                </div>
+                                <div class="col">
+                                    <img src="images/red-chili-pepper.png" alt="spicy" width="15">
+                                    Spicy
+                                </div>
+                                <div class="col">
+                                    <img src="images/new.png" alt="bestseller" width="15">
+                                    New Flavor
+                                </div>
+                                <div class="col">
+                                    <img src="images/limited.png" alt="bestseller" width="15">
+                                    Limited Offer
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <div class="row">
+
+                                <!-- Bacon Glazed Pizza -->
+
+                                    <div class="col d-flex justify-content-center my-3">
+                                        <div class="card pizzaproductcard">
+                                            <div class="card-body text-center">
+                                                <img src="images/Pizza_Products/Bacon-Glazed_1.png" class="card-img-top"
+                                                    alt="Bacon Glazed Pizza">
+                                                <h5 class="card-title fw-bold">
+                                                    Bacon Glazed Pizza
+                                                </h5>
+                                                <select name="pizza-size" id="pizza-size" class="form-select">
+                                                    <option value="9">9 inches</option>
+                                                    <option value="12">12 inches</option>
+                                                    <option value="18">18 inches</option>
+                                                </select>
+                                                <p class="card-text"> Starts at ₱275</p>
+                                                <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                <!-- Crunchy Pepperoni Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Crunchy Pepperoni.png" class="card-img-top"
+                                                alt="Crunchy Pepperoni Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Crunchy Pepperoni Pizza
+                                            </h5>
+
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+
+                                            <p class="card-text"> Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Hi Protein Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Hi-protein.png" class="card-img-top"
+                                                alt="Hi Protein Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Hi Protein Pizza
+                                            </h5>
+
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+
+                                            <p class="card-text"> Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pepperoni Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/OG - PEPPERONI.jpg" class="card-img-top"
+                                                alt="Pepperoni Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Pepperoni Pizza
+                                            </h5>
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+                                            <p class="card-text"> Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pork and Beef Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Pork And Beef.jpg" class="card-img-top"
+                                                alt="Pork and Beef Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Pork and Beef Pizza
+                                            </h5>
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+                                            <p class="card-text"> Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Spicy Cheese Burger Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Spicy CheeeseBurger Pizza.jpg" class="card-img-top"
+                                                alt="Spicy Cheese Burger Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Spicy Cheese Burger Pizza
+                                            </h5>
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+                                            <p class="card-text"> Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Roast Beef Pizza -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Roast_Beef_web_and_app_6AQdduY.png" class="card-img-top"
+                                                alt="Roast Beef Pizza">
+                                            <h5 class="card-title fw-bold">
+                                                Roast Beef Pizza
+                                            </h5>
+                                            <select name="pizza-size" id="pizza-size" class="form-select">
+                                                <option value="9">9 inches</option>
+                                                <option value="12">12 inches</option>
+                                                <option value="18">18 inches</option>
+                                            </select>
+                                            <p class="card-text"> Starts at ₱275</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Drinks" class="tabcontent pt-3">
+                    <div class="container-fluid">
+                        <div class="menuheading">
+                            <h1 class="display-6 fw-bold text-uppercase">
+                                Drinks
+                            </h1>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <div class="row">
+
+                                <!-- Pepsi -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Pepsi.png" width="3em" class="card-img-top"
+                                                alt="Pepsi 1.5 Liters">
+                                            <h5 class="card-title fw-bold">
+                                                Pepsi 1.5 Liters
+                                            </h5>
+                                            <select class="invisible"></select>
+                                            <p class="card-text"> Starts at ₱75</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Coke -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Coke.png" width="3em" class="card-img-top"
+                                                alt="Coke 1.5 Liters">
+                                            <h5 class="card-title fw-bold">
+                                                Coke 1.5 Liters
+                                            </h5>
+                                            <select class="invisible"></select>
+                                            <p class="card-text"> Starts at ₱75</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mountain Dew -->
+
+                                <div class="col d-flex justify-content-center my-3">
+                                    <div class="card pizzaproductcard">
+                                        <div class="card-body text-center">
+                                            <img src="images/Pizza_Products/Mt Dew.png" width="3em" class="card-img-top"
+                                                alt="Mountain Dew 1.5 Liters">
+                                            <h5 class="card-title fw-bold">
+                                                Mountain Dew 1.5 Liters
+                                            </h5>
+                                            <select class="invisible"></select>
+                                            <p class="card-text"> Starts at ₱75</p>
+                                            <button class="btn btn-success" onclick="addToCart(event)">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <div id="login" class="page hidden">
+            <div class="login-register-form">
+                <section id="login-form" class="login">
+                    <h1>Login to Jennie's Pizza</h1>
+                    <p>New Users? <span onclick="signUp()">Create an Account</span> &nbsp;
+                        <span id="loading-register" class="spinner-border d-none"></span>
+                    </p>
+
+                    <form id="loginForm" action="#">
+
+                        <!-- Email Field -->
+                        <label for="login-email">Email Address</label>
+                        <input type="text" class="form-control is-invalid" id="login-email" required>
+                        <span id="login-email-error" class="text-danger d-none"></span>
+
+                        <!-- Password Filed -->
+                        <label for="login-password">Password</label>
+                        <input type="password" class="form-control is-invalid" id="login-password" required>
+                        <span id="login-password-error" class="text-danger d-none"></span>
+
+                        <button type="submit" onclick="validateLoginForm()">Login</button>
+
+                    </form>
+
+                </section>
+
+                <section id="register-form" class="register">
+
+                    <h1>Register to Jennie's Pizza</h1>
+                    <p>Already have an account? <span onclick="signIn()">Login</span> &nbsp;
+                        <span id="loading-login" class="spinner-border text-primary d-none"></span>
+                    </p>
+
+                    <form id="registerForm" action="#">
+
+                        <!-- First Name Field -->
+                        <label for="first-name">First Name</label>
+                        <input type="text" class="form-control is-invalid" id="first-name" required>
+                        <span id="first-name-error" class="text-danger d-none"></span>
+
+                        <!-- Last Name Field -->
+                        <label for="last-name">Last Name</label>
+                        <input type="text" class="form-control is-invalid" id="last-name" required>
+                        <span id="last-name-error" class="text-danger d-none"></span>
+
+                        <!-- Email Field -->
+                        <label for="register-email">Email Address</label>
+                        <input type="email" class="form-control is-invalid" id="register-email" required>
+                        <span id="register-email-error" class="text-danger d-none"></span>
+
+                        <!-- Password Field -->
+                        <label for="register-password">Password</label>
+                        <input type="password" class="form-control is-invalid" id="register-password" required>
+                        <span id="register-password-error" class="text-danger d-none"></span>
+
+                        <!-- Confirm Password Field -->
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" class="form-control is-invalid" id="confirm-password" required>
+                        <span id="confirm-password-error" class="text-danger d-none"></span>
+
+
+                        <button type="submit" onclick="validateRegisterForm()">Register</button>
+
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <!-- ORDER FORM -->
+        <div id="place-order" class="page hidden">
+            <div class="container">
+                <main>
+                    <div class="order-form">
+                        <div class="py-5 text-center">
+                            <!-- <img class="d-block mx-auto mb-4" src="./images/Jennie'sPizzaLogo.png" alt="" width="300" height="57">
+                        <h2>Checkout form</h2>
+                        <p class="lead">Delivery</p> -->
+                        </div>
+
+                        <div class="row g-5">
+                            <div class="col-md-5 col-lg-4 order-md-last">
+
+                                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-primary">Your cart</span>
+                                    <span class="badge bg-primary rounded-pill">3</span>
+                                </h4>
+
+                                <ul class="list-group mb-3">
+
+                                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                                        <div>
+                                            <h6 class="my-0">Product name</h6>
+                                            <small class="text-body-secondary">Brief description</small>
+                                        </div>
+                                        <span class="text-body-secondary">$12</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                                        <div>
+                                            <h6 class="my-0">Second product</h6>
+                                            <small class="text-body-secondary">Brief description</small>
+                                        </div>
+                                        <span class="text-body-secondary">$8</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                                        <div>
+                                            <h6 class="my-0">Third item</h6>
+                                            <small class="text-body-secondary">Brief description</small>
+                                        </div>
+                                        <span class="text-body-secondary">$5</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                                        <div class="text-success">
+                                            <h6 class="my-0">Promo code</h6>
+                                            <small>EXAMPLECODE</small>
+                                        </div>
+                                        <span class="text-success">−$5</span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Total (PHP)</span>
+                                        <strong id="total-content"></strong>
+                                    </li>
+
+                                </ul>
+
+                                <form class="card p-2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Promo code">
+                                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <div class="col-md-7 col-lg-8">
+                                <h4 class="mb-3">Billing address</h4>
+
+                                <form class="needs-validation" novalidate>
+
+                                    <div class="row g-3">
+
+                                        <div class="col-sm-6">
+                                            <label for="firstName" class="form-label">First name</label>
+                                            <input type="text" class="form-control" id="firstName" placeholder=""
+                                                value="" required>
+                                            <div class="invalid-feedback">
+                                                Valid first name is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="lastName" class="form-label">Last name</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder=""
+                                                value="" required>
+                                            <div class="invalid-feedback">
+                                                Valid last name is required.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="you@example.com">
+                                            <div class="invalid-feedback">
+                                                Please enter a valid email address for shipping updates.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" class="form-control" id="address"
+                                                placeholder="1234 Main St" required>
+                                            <div class="invalid-feedback">
+                                                Please enter your shipping address.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <h4 class="mb-3">Payment</h4>
+
+                                    <div class="my-3">
+
+                                        <div class="form-check">
+                                            <input id="credit" name="paymentMethod" type="radio"
+                                                class="form-check-input" checked required>
+                                            <label class="form-check-label" for="credit">Cash on Delivery </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input"
+                                                required>
+                                            <label class="form-check-label" for="debit">Debit card</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input id="paypal" name="paymentMethod" type="radio"
+                                                class="form-check-input" required>
+                                            <label class="form-check-label" for="paypal">PayPal</label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row gy-3">
+
+                                        <div class="col-md-6">
+                                            <label for="cc-name" class="form-label">Name on card</label>
+                                            <input type="text" class="form-control" id="cc-name" placeholder=""
+                                                required>
+                                            <small class="text-body-secondary">Full name as displayed on card</small>
+                                            <div class="invalid-feedback">
+                                                Name on card is required
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="cc-number" class="form-label">Credit card number</label>
+                                            <input type="text" class="form-control" id="cc-number" placeholder=""
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Credit card number is required
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label for="cc-expiration" class="form-label">Expiration</label>
+                                            <input type="text" class="form-control" id="cc-expiration" placeholder=""
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Expiration date required
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label for="cc-cvv" class="form-label">CVV</label>
+                                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                            <div class="invalid-feedback">
+                                                Security code required
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <button class="w-100 btn btn-primary btn-lg" type="submit" data-bs-toggle="modal"
+                                        data-bs-target="#order-slip">
+                                        Confirm Order
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+            <div class="modal fade" id="order-slip" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content rounded-4 shadow">
+
+                        <div class="modal-header border-bottom-0">
+                            <h1 class="modal-title fs-5">ORDER SLIP</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body py-0">
+                            <h5>First Name: <span id=""></span> </h5>
+                            <h5>Last Name: <span id=""></span> </h5>
+                            <h5>Email: <span id=""></span> </h5>
+                            <h5>Address: <span id=""></span> </h5>
+                            <h5>Mode of Payment: <span id=""></span> </h5>
+                            <h5>Total Payment: <span id=""></span> </h5>
+                        </div>
+
+                        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                            <button type="button" class="btn btn-lg btn-primary">Proceed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="p-5 d-flex flex-column flex-md-row" id="about">
+            <div class="logoabout">
+                <img src="images/Jennie'sPizzaLogo.png" alt="Jennie's Pizza" width="200">
+                <div class="d-flex flex-column">
+                    <p class="aboutus p-3"><small>Jennie's Pizza was established in 2020 during the COVID pandemic. We
+                            started selling homemade pizzas through social media and online delivery platforms. Since
+                            then, Jennie's Pizza has become the go-to online pizza delivery in Cebu City.</small></p>
+                </div>
+            </div>
+            <p class="aboutusdetails">
+            <div class="contactdetails">
+                <p class="aboutus p-2 lead">Contact</p>
+                <div class="row d-flex justify-content-around">
+                    <div class="col">
+                        <i class="fa-solid fa-phone"></i>
+                        +63 911-111-1111
+                    </div>
+                </div>
+                <div class="row py-2 d-flex justify-content-around">
+                    <div class="col">
+                        <i class="fa-solid fa-envelope"></i>
+                        order@jenniespizza.com
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-around">
+                    <div class="col">
+                        <i class="fa-solid fa-location-dot"></i>
+                        #11 Salcedo St. Licaldo Subdivision, Tisa, Cebu City, Cebu, Philippines 6000
+                    </div>
+                </div>
+            </div>
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <section class="container-fluid">
+
+            <div class="social-icons pt-4">
+                <a href="https://www.facebook.com/profile.php?id=100091366151244" target="blank"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/gesil123/" target="blank"><i class="fab fa-instagram px-3"></i></a>
+                <a href="https://twitter.com/GesilLobiano" target="blank"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <div class="credit py-3">
+                &copy; Copyright @ 2023 by <span>Jennie's Pizza</span> | All Rights Reserved!
+            </div>
+
+        </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/account.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="./js/order.js"></script>
+    <script src="./js/history-api.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
